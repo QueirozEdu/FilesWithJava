@@ -1,11 +1,13 @@
+package br.com.edu;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-
-public class Program {
+public class Program implements Constants{
 
     public static void main(String[] args) {
-        File file = new File("C:/Users/Eduxt/workspace/study/JavaStudies/FilesWithJava/textfile.txt");
+
+        File file = new File(APP_FILE_ONE_PATH);
         Scanner sc = null;
         try {
             sc = new Scanner(file);
