@@ -1,27 +1,23 @@
 package br.com.edu;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import javax.imageio.IIOException;
+import java.io.*;
 import java.util.Scanner;
 public class Program implements Constants{
 
     public static void main(String[] args) {
 
-        File file = new File(APP_FILE_ONE_PATH);
-        Scanner sc = null;
-        try {
-            sc = new Scanner(file);
-            while (sc.hasNextLine()) {
-                System.out.println(sc.nextLine());
-            }
+
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(APP_FILEONE_PATH))) {
+
+                String line = bufferedReader.readLine();
+                while (line != null) {
+                    System.out.println(line);
+                    line = bufferedReader.readLine();
+                }
         }
-        catch (FileNotFoundException e) {
-            System.out.println(e);
+        catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-        finally {
-            if (sc != null) {
-                sc.close();
-            }
         }
     }
-}
